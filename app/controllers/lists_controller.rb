@@ -36,6 +36,13 @@ class ListsController < ApplicationController
 		@lists = List.all
 	end
 
+	def destroy
+		@list = List.find(params[:id])
+		@list.destroy
+		flash[:notice] = "Todo was deleted successfully"
+		redirect_to lists_path
+	end
+
 	private
 
 	def list_params
