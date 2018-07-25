@@ -32,6 +32,10 @@ class ListsController < ApplicationController
 		end
 	end
 
+	def index
+		@lists = List.all
+	end
+
 	private
 
 	def list_params
