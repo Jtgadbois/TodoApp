@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+	before_action :set_todo, only: [:edit, :update, :show, :destroy]
+
 
 	def new
 		@list = List.new
@@ -15,7 +17,7 @@ class ListsController < ApplicationController
 	end
 
 	def show
-		@list = List.find(params[:id]) 
+		@list = List.find(params[:id])
 	end
 
 	def edit
@@ -44,6 +46,10 @@ class ListsController < ApplicationController
 	end
 
 	private
+
+	def set_todo
+		@list = List.find(params[:id])
+	end
 
 	def list_params
 		params.require(:list).permit(:name, :description)
